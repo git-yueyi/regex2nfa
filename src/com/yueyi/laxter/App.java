@@ -23,6 +23,16 @@ public class App {
 		System.out.println(nfa);
 	}
 
+        /***
+	 * 在正则表达式里，表达式与操作符是右结合的，
+	 * 如：a+, 然后两个表达式之间要么是是concat组合，要么是或组合，
+	 * 所以我们在构造语法树时，可以考虑从右往左，依次将各个小的表达式，
+	 * 操作符分别抽出来，然后对该小的正则表达式构建语法树则可。
+	 * @param inRegex
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
 	private static Node regex2NFA(String inRegex, int begin, int end) {
 		int stkflg = 0;
 		int starti = -1;
